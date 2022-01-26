@@ -18,12 +18,12 @@ int	addLLElement(LinkedList* pList, int position, ListNode element)		// 노드 �
 	ListNode	*addNode;
 	int	i;
 
+	if (position < 0 || position > pList->currentElementCount)
+		return (FALSE);
 	addNode = (ListNode *)malloc(sizeof(ListNode));
 	if (addNode == NULL)
 		return (FALSE);
 	*addNode = element;
-	if (position < 0 || position > pList->currentElementCount)
-		return (FALSE);
 	if (position == 0)
 	{
 		addNode->pLink = pList->headerNode.pLink;
@@ -47,7 +47,6 @@ int	removeLLElement(LinkedList* pList, int position)		// 노드 제거
 	ListNode *temp;
 	int	i;
 
-	curr = pList->headerNode.pLink;
 	if (position < 0 || position >= pList->currentElementCount)
 		return (FALSE);
 	if (position == 0)
@@ -57,6 +56,7 @@ int	removeLLElement(LinkedList* pList, int position)		// 노드 제거
 	}
 	else
 	{
+		curr = pList->headerNode.pLink;
 		for (i = 0; i < position - 1; i++)
 			curr = curr->pLink;
 		temp = curr->pLink;

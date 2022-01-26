@@ -1,42 +1,42 @@
-#include "circularlinkedlist.h"
+#include "doublylist.h"
 
 void	func()
 {
-	CircularList	*list;
-	CircularListNode	node;
+	DoublyList	*list;
+	DoublyListNode	node;
 	
-	list = createCircularList();
-	node.pLink = NULL;
+	list = createDoublyList();
+	displayDoublyList(list);
 
 	node.data = 10;
-	addCLElement(list, 0, node);
-	displayCircularList(list);
+	addDLElement(list, 0, node);
+	displayDoublyList(list);
 
 	node.data = 15;
-	addCLElement(list, 0, node);
-	displayCircularList(list);
+	addDLElement(list, 0, node);
+	displayDoublyList(list);
 
 	node.data = 20;
-	addCLElement(list, 1, node);
-	displayCircularList(list);
+	addDLElement(list, 1, node);
+	displayDoublyList(list);
 
 	node.data = 30;
-	addCLElement(list, 2, node);
-	displayCircularList(list);
+	addDLElement(list, 2, node);
+	displayDoublyList(list);
 
 	node.data = 40;
-	addCLElement(list, 3, node);
-	displayCircularList(list);
+	addDLElement(list, 3, node);
+	displayDoublyList(list);
 
-	removeCLElement(list, 3);
-	displayCircularList(list);
+	removeDLElement(list, 3);
+	displayDoublyList(list);
 
-	removeCLElement(list, 0);
-	displayCircularList(list);
+	removeDLElement(list, 0);
+	displayDoublyList(list);
 
-	clearCircularList(list);
-	displayCircularList(list);
-	deleteCircularList(list);
+	clearDoublyList(list);
+	displayDoublyList(list);
+	deleteDoublyList(list);
 }
 
 int main(void)
