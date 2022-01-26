@@ -1,7 +1,6 @@
 #ifndef _LINKEDLIST_
 #define _LINKEDLIST_
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 
 typedef struct ListNodeType
@@ -21,6 +20,7 @@ int			addLLElement(LinkedList* pList, int position, ListNode element);	// 노드
 int			removeLLElement(LinkedList* pList, int position);					// 노드 제거
 ListNode*	getLLElement(LinkedList* pList, int position);						// 노드 가져오기
 
+void		displayLinkedList(LinkedList *lst);										// linkedlist 출력
 void		clearLinkedList(LinkedList* pList);									// linkedlist 초기화
 int			getLinkedListLength(LinkedList* pList);								// linkedlist 노드의 개수 확인
 void		deleteLinkedList(LinkedList* pList);								// linkedlist free

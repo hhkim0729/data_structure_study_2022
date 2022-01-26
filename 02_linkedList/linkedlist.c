@@ -8,6 +8,7 @@ LinkedList*	createLinkedList()		// linkedlist 생성
 	if (linkedlist == NULL)
 		return (NULL);
 	linkedlist->currentElementCount = 0;
+	linkedlist->headerNode.pLink = NULL;
 	return (linkedlist);
 }
 
@@ -27,7 +28,6 @@ int	addLLElement(LinkedList* pList, int position, ListNode element)		// 노드 �
 	{
 		addNode->pLink = pList->headerNode.pLink;
 		pList->headerNode.pLink = addNode;
-		pList->currentElementCount++;
 	}
 	else
 	{
@@ -36,8 +36,8 @@ int	addLLElement(LinkedList* pList, int position, ListNode element)		// 노드 �
 			curr = curr->pLink;
 		addNode->pLink = curr->pLink;
 		curr->pLink = addNode;
-		pList->currentElementCount++;
 	}
+	pList->currentElementCount++;
 	return (TRUE);
 }
 
@@ -48,7 +48,7 @@ int	removeLLElement(LinkedList* pList, int position)		// 노드 제거
 	int	i;
 
 	curr = pList->headerNode.pLink;
-	if (position < 0 || position >= pList->currentElementCount || pList->currentElementCount == 0)
+	if (position < 0 || position >= pList->currentElementCount)
 		return (FALSE);
 	if (position == 0)
 	{
@@ -74,7 +74,7 @@ ListNode*	getLLElement(LinkedList* pList, int position) 		// 노드 가져오기
 	int	i;
 	ListNode	*curr;
 
-	if (position < 0 || position >= pList->currentElementCount || pList->currentElementCount == 0)
+	if (position < 0 || position >= pList->currentElementCount)
 		return (NULL);
 	curr = pList->headerNode.pLink;
 	for (i = 0; i < position; i++)
@@ -82,16 +82,44 @@ ListNode*	getLLElement(LinkedList* pList, int position) 		// 노드 가져오기
 	return (curr);
 }
 
+void	displayLinkedList(LinkedList *pList)
+{
+	ListNode	*curr;
+
+	curr = pList->headerNode.pLink;
+	if (!curr)
+		printf("empty list");
+	else{
+		while (curr)
+		{
+			printf("%d ", curr->data);
+			curr = curr->pLink;
+		}
+	}
+	printf("\n");
+}
+
 void	clearLinkedList(LinkedList* pList) 		// linkedlist 초기화
 {
+	ListNode	*curr;
+	ListNode	*next;
+
+	curr = pList->headerNode.pLink;
 	while (pList->currentElementCount)
-		removeLLElement(pList, 0);
+	{
+		next = curr->pLink;
+		free(curr);
+		curr = next;
+		pList->currentElementCount--;
+	}
+	pList->headerNode.pLink = NULL;
 }
 
 int	getLinkedListLength(LinkedList* pList) 		// linkedlist 노드의 개수 확인
 {
 	return (pList->currentElementCount);
 }
+
 void	deleteLinkedList(LinkedList* pList) 	// linkedlist free
 {
 	clearLinkedList(pList);
