@@ -2,46 +2,73 @@
 
 void	func()
 {
-	CircularList	*list;
+	CircularList		*pList;
+	CircularListNode	*temp;
 	CircularListNode	node;
-	
-	list = createCircularList();
-	node.pLink = NULL;
+	int					number;
+	int					position;
+	int					is_exit;
 
-	node.data = 10;
-	addCLElement(list, 0, node);
-	displayCircularList(list);
-
-	node.data = 15;
-	addCLElement(list, 0, node);
-	displayCircularList(list);
-
-	node.data = 20;
-	addCLElement(list, 1, node);
-	displayCircularList(list);
-
-	node.data = 30;
-	addCLElement(list, 2, node);
-	displayCircularList(list);
-
-	node.data = 40;
-	addCLElement(list, 3, node);
-	displayCircularList(list);
-
-	removeCLElement(list, 3);
-	displayCircularList(list);
-
-	removeCLElement(list, 0);
-	displayCircularList(list);
-
-	clearCircularList(list);
-	displayCircularList(list);
-	deleteCircularList(list);
+	pList = createCircularList();
+	is_exit = 0;
+	while (1)
+	{
+		if (is_exit)
+			break ;
+		printf("1: Add\n2: Remove\n3: Get\n4: Clear\n5: Display\n6: Exit\n");
+		scanf(" %d", &number);
+		switch (number)
+		{
+		case 1:
+			printf("{data, position} : ");
+			scanf("%d %d", &node.data, &position);
+			addCLElement(pList, position, node);
+			printf("\n");
+			displayCircularList(pList);
+			printf("\n");
+			break;
+		case 2:
+			printf("position : ");
+			scanf("%d", &position);
+			removeCLElement(pList, position);
+			printf("\n");
+			displayCircularList(pList);
+			printf("\n");
+			break;
+		case 3:
+			printf("position : ");
+			scanf("%d", &position);
+			temp = getCLElement(pList, position);
+			if (temp)
+			{
+				printf("\n");
+				printf("%d\n\n", temp->data);
+			}
+			break;
+		case 4:
+			clearCircularList(pList);
+			printf("\n");
+			displayCircularList(pList);
+			printf("\n");
+			break;
+		case 5:
+			printf("\n");
+			displayCircularList(pList);
+			printf("\n");
+			break;
+		case 6:
+			is_exit = 1;
+			break;
+		default:
+			break;
+		}
+	}
+	deleteCircularList(pList);
 }
 
 int main(void)
 {
 	func();
-	// system("leaks a.out");
+	// system("leaks circularlist");
 	return (0);
 }

@@ -14,12 +14,11 @@ CircularList*	createCircularList()		// list 생성
 
 int	addCLElement(CircularList* pList, int position, CircularListNode element)		// 노드 추가
 {
-	CircularListNode	*curr;
+	CircularListNode	*prev;
 	CircularListNode	*new;
 	CircularListNode	*last;
-	int	i;
 
-	if (position < 0 || position > pList->currentElementCount)
+	if (pList == NULL || position < 0 || position > pList->currentElementCount)
 		return (FALSE);
 	new = (CircularListNode *)malloc(sizeof(CircularListNode));
 	if (new == NULL)
@@ -35,11 +34,9 @@ int	addCLElement(CircularList* pList, int position, CircularListNode element)		/
 	}
 	else
 	{
-		curr = pList->headerNode.pLink;
-		for (i = 0; i < position - 1; i++)
-			curr = curr->pLink;
-		new->pLink = curr->pLink;
-		curr->pLink = new;
+		prev = getCLElement(pList, position - 1);
+		new->pLink = prev->pLink;
+		prev->pLink = new;
 		pList->currentElementCount++;
 	}
 	return (TRUE);
@@ -47,32 +44,29 @@ int	addCLElement(CircularList* pList, int position, CircularListNode element)		/
 
 int	removeCLElement(CircularList* pList, int position)		// 노드 제거
 {
-	CircularListNode	*curr;
+	CircularListNode	*prev;
 	CircularListNode	*temp;
 	CircularListNode	*last;
-	int	i;
 
-	if (position < 0 || position >= pList->currentElementCount)
+	if (pList == NULL || position < 0 || position >= pList->currentElementCount)
 		return (FALSE);
-	curr = pList->headerNode.pLink;
 	if (position == 0)
 	{
-		temp = curr;
+		temp = pList->headerNode.pLink;
 		if (pList->currentElementCount == 1)
 			pList->headerNode.pLink = NULL;
 		else
 		{
 			last = getLastCLElement(pList);
-			last->pLink = curr->pLink;
-			pList->headerNode.pLink = curr->pLink;
+			last->pLink = temp->pLink;
+			pList->headerNode.pLink = temp->pLink;
 		}
 	}
 	else
 	{
-		for (i = 0; i < position - 1; i++)
-			curr = curr->pLink;
-		temp = curr->pLink;
-		curr->pLink = curr->pLink->pLink;
+		prev = getCLElement(pList, position - 1);
+		temp = prev->pLink;
+		prev->pLink = prev->pLink->pLink;
 	}
 	free(temp);
 	temp = NULL;
@@ -82,10 +76,10 @@ int	removeCLElement(CircularList* pList, int position)		// 노드 제거
 
 CircularListNode*	getCLElement(CircularList* pList, int position) 		// 노드 가져오기
 {
-	int	i;
+	int					i;
 	CircularListNode	*curr;
 
-	if (position < 0 || position >= pList->currentElementCount)
+	if (pList == NULL || position < 0 || position >= pList->currentElementCount)
 		return (NULL);
 	curr = pList->headerNode.pLink;
 	for (i = 0; i < position; i++)
@@ -101,15 +95,17 @@ CircularListNode*	getLastCLElement(CircularList* pList)
 void	displayCircularList(CircularList *pList)
 {
 	CircularListNode	*curr;
-	int	i;
+	int					i;
 
+	if (pList == NULL)
+		return ;
 	curr = pList->headerNode.pLink;
 	if (!curr)
 		printf("empty list");
 	else{
-		for (i = 0; i <= pList->currentElementCount; i++)
+		for (i = 0; i < pList->currentElementCount; i++)
 		{
-			printf("(%d) %d\t", i % pList->currentElementCount, curr->data);
+			printf("%d ", curr->data);
 			curr = curr->pLink;
 		}
 	}
@@ -121,6 +117,8 @@ void	clearCircularList(CircularList* pList) 		// list 초기화
 	CircularListNode	*curr;
 	CircularListNode	*next;
 
+	if (pList == NULL)
+		return ;
 	curr = pList->headerNode.pLink;
 	while (pList->currentElementCount)
 	{
@@ -134,11 +132,15 @@ void	clearCircularList(CircularList* pList) 		// list 초기화
 
 int	getCircularListLength(CircularList* pList) 		// list 노드의 개수 확인
 {
+	if (pList == NULL)
+		return (-1);
 	return (pList->currentElementCount);
 }
 
 void	deleteCircularList(CircularList* pList) 	// list free
 {
+	if (pList == NULL)
+		return ;
 	clearCircularList(pList);
 	free(pList);
 	pList = NULL;
