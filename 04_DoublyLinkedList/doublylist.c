@@ -55,9 +55,7 @@ int removeDLElement(DoublyList *pList, int position) // 노드 제거
 	pList->currentElementCount--;
 	return (TRUE);
 }
-// 0 1 2 3 4 5
-// c: 6
-// c / 2 : 3
+
 DoublyListNode *getDLElement(DoublyList *pList, int position) // 노드 가져오기
 {
 	int i;
