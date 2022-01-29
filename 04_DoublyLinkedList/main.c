@@ -2,46 +2,74 @@
 
 void	func()
 {
-	DoublyList	*list;
+	DoublyList		*pList;
+	DoublyListNode	*temp;
 	DoublyListNode	node;
-	
-	list = createDoublyList();
-	displayDoublyList(list);
+	int				number;
+	int				position;
+	int				is_exit;
 
-	node.data = 10;
-	addDLElement(list, 0, node);
-	displayDoublyList(list);
-
-	node.data = 15;
-	addDLElement(list, 0, node);
-	displayDoublyList(list);
-
-	node.data = 20;
-	addDLElement(list, 1, node);
-	displayDoublyList(list);
-
-	node.data = 30;
-	addDLElement(list, 2, node);
-	displayDoublyList(list);
-
-	node.data = 40;
-	addDLElement(list, 3, node);
-	displayDoublyList(list);
-
-	removeDLElement(list, 3);
-	displayDoublyList(list);
-
-	removeDLElement(list, 0);
-	displayDoublyList(list);
-
-	clearDoublyList(list);
-	displayDoublyList(list);
-	deleteDoublyList(list);
+	pList = createDoublyList();
+	is_exit = 0;
+	while (1)
+	{
+		if (is_exit)
+			break ;
+		printf("1: Add\n2: Remove\n3: Get\n4: Clear\n5: Display\n6: Exit\n");
+		scanf("%d", &number);
+		getchar();
+		switch (number)
+		{
+		case 1:
+			printf("{data, position} : ");
+			scanf("%d %d", &node.data, &position);
+			addDLElement(pList, position, node);
+			printf("\n");
+			displayDoublyList(pList);
+			printf("\n");
+			break;
+		case 2:
+			printf("position : ");
+			scanf("%d", &position);
+			removeDLElement(pList, position);
+			printf("\n");
+			displayDoublyList(pList);
+			printf("\n");
+			break;
+		case 3:
+			printf("position : ");
+			scanf("%d", &position);
+			temp = getDLElement(pList, position);
+			if (temp)
+			{
+				printf("\n");
+				printf("%d\n\n", temp->data);
+			}
+			break;
+		case 4:
+			clearDoublyList(pList);
+			printf("\n");
+			displayDoublyList(pList);
+			printf("\n");
+			break;
+		case 5:
+			printf("\n");
+			displayDoublyList(pList);
+			printf("\n");
+			break;
+		case 6:
+			is_exit = 1;
+			break;
+		default:
+			break;
+		}
+	}
+	deleteDoublyList(pList);
 }
 
 int main(void)
 {
 	func();
-	// system("leaks a.out");
+	// system("leaks doublylist");
 	return (0);
 }
