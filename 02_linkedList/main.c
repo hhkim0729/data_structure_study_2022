@@ -1,45 +1,59 @@
 #include "linkedlist.h"
 
-void	func()
+/* TEST: linkedlist 추가 삭제 */
+void	func1()
 {
-	LinkedList	*linkedlist;
-	linkedlist = createLinkedList();
-
+	LinkedList	*list;
 	ListNode	node;
-	node.data = 10;
-	node.pLink = NULL;
-	addLLElement(linkedlist, 0, node);
-	displayLinkedList(linkedlist);
+	int			i;
 
-	node.data = 20;
-	node.pLink = NULL;
-	addLLElement(linkedlist, 1, node);
-	displayLinkedList(linkedlist);
+	list = createLinkedList();
+	for (i = 0; i < 5; i++)
+	{
+		node.data = i + 10;
+		addLLElement(list, i, node);
+		displayLinkedList(list);
+	}
 
-	node.data = 30;
-	node.pLink = NULL;
-	addLLElement(linkedlist, 2, node);
-	displayLinkedList(linkedlist);
+	removeLLElement(list, 4);
+	displayLinkedList(list);
 
-	node.data = 40;
-	node.pLink = NULL;
-	addLLElement(linkedlist, 3, node);
-	displayLinkedList(linkedlist);
+	removeLLElement(list, 0);
+	displayLinkedList(list);
 
-	removeLLElement(linkedlist, 3);
-	displayLinkedList(linkedlist);
+	removeLLElement(list, 1);
+	displayLinkedList(list);
 
-	removeLLElement(linkedlist, 0);
-	displayLinkedList(linkedlist);
+	clearLinkedList(list);
+	displayLinkedList(list);
 
-	clearLinkedList(linkedlist);
-	displayLinkedList(linkedlist);
-	deleteLinkedList(linkedlist);
+	deleteLinkedList(list);
 }
+
+/* TEST: linkedlist reverse */
+// void func2(void)
+// {
+// 	LinkedList*	list;
+// 	ListNode	node;
+// 	int			i;
+
+// 	list = createLinkedList();
+// 	for (i = 0; i < 32; i++)
+// 	{
+// 		node.data = i + 1;
+// 		addLLElement(list, i, node);
+// 	}
+// 	displayLinkedList(list);
+
+// 	reverseLinkedList(list);
+// 	displayLinkedList(list);
+
+// 	deleteLinkedList(list);
+// }
 
 int main(void)
 {
-	func();
-	// system("leaks a.out");
+	func1();
+	// system("leaks linkedlist");
 	return (0);
 }
