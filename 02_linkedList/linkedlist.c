@@ -14,7 +14,7 @@ LinkedList*	createLinkedList()		// linkedlist 생성
 
 int	addLLElement(LinkedList* pList, int position, ListNode element)		// 노드 추가
 {
-	ListNode	*curr;
+	ListNode	*prev;
 	ListNode	*new;
 
 	if (pList == NULL || position < 0 || position > pList->currentElementCount)
@@ -30,9 +30,9 @@ int	addLLElement(LinkedList* pList, int position, ListNode element)		// 노드 �
 	}
 	else
 	{
-		curr = getLLElement(pList, position - 1);
-		new->pLink = curr->pLink;
-		curr->pLink = new;
+		prev = getLLElement(pList, position - 1);
+		new->pLink = prev->pLink;
+		prev->pLink = new;
 	}
 	pList->currentElementCount++;
 	return (TRUE);
@@ -40,22 +40,21 @@ int	addLLElement(LinkedList* pList, int position, ListNode element)		// 노드 �
 
 int	removeLLElement(LinkedList* pList, int position)		// 노드 제거
 {
-	ListNode *curr;
+	ListNode *prev;
 	ListNode *temp;
 
 	if (pList == NULL || position < 0 || position >= pList->currentElementCount)
 		return (FALSE);
 	if (position == 0)
 	{
-		curr = pList->headerNode.pLink;
-		temp = curr;
-		pList->headerNode.pLink = curr->pLink;
+		temp = pList->headerNode.pLink;
+		pList->headerNode.pLink = temp->pLink;
 	}
 	else
 	{
-		curr = getLLElement(pList, position - 1);
-		temp = curr->pLink;
-		curr->pLink = curr->pLink->pLink;
+		prev = getLLElement(pList, position - 1);
+		temp = prev->pLink;
+		prev->pLink = prev->pLink->pLink;
 	}
 	free(temp);
 	temp = NULL;
