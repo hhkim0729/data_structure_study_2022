@@ -1,22 +1,23 @@
 #include "circularlist.h"
 
-void	func()
+void func()
 {
-	CircularList		*pList;
-	CircularListNode	*temp;
-	CircularListNode	node;
-	int					number;
-	int					position;
-	int					is_exit;
+	CircularList *pList;
+	CircularListNode *temp;
+	CircularListNode node;
+	int number;
+	int position;
+	int is_exit;
 
 	pList = createCircularList();
 	is_exit = 0;
 	while (1)
 	{
 		if (is_exit)
-			break ;
+			break;
 		printf("1: Add\n2: Remove\n3: Get\n4: Clear\n5: Display\n6: Exit\n");
 		scanf(" %d", &number);
+		getchar();
 		switch (number)
 		{
 		case 1:
