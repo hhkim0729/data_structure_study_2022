@@ -83,7 +83,7 @@ void	displayLinkedList(LinkedList *pList)
 	if (pList == NULL)
 		return;
 	curr = pList->headerNode.pLink;
-	if (!curr)
+	if (curr == NULL)
 		printf("empty list");
 	else
 	{
@@ -117,7 +117,7 @@ void	clearLinkedList(LinkedList *pList) // linkedlist 초기화
 int	getLinkedListLength(LinkedList *pList) // linkedlist 노드의 개수 확인
 {
 	if (pList == NULL)
-		return (-1);
+		return (ERROR);
 	return (pList->currentElementCount);
 }
 
@@ -229,14 +229,19 @@ void	displayPolyList(LinkedList *list)
 	if (list == NULL)
 		return ;
 	curr = list->headerNode.pLink;
-	while (curr)
+	if (curr == NULL)
+		printf("empty list");
+	else
 	{
-		printf("%.1f", curr->coef);
-		if (curr->degree)
-			printf("x^%i", curr->degree);
-		curr = curr->pLink;
-		if (curr)
-			printf(" + ");
+		while (curr)
+		{
+			printf("%.1f", curr->coef);
+			if (curr->degree)
+				printf("x^%i", curr->degree);
+			curr = curr->pLink;
+			if (curr)
+				printf(" + ");
+		}
 	}
 	printf("\n");
 }

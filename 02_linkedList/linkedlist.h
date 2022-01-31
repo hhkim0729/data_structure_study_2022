@@ -36,7 +36,8 @@ void		displayPolyList(LinkedList *list);						// 다항식 출력
 #ifndef _COMMON_LIST_DEF_
 #define _COMMON_LIST_DEF_
 
-#define TRUE 1
-#define FALSE 0
+#define TRUE	1
+#define FALSE	0
+#define ERROR	-1
 
 #endif
