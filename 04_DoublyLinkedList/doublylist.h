@@ -24,7 +24,7 @@ DoublyListNode* getDLElement(DoublyList* pList, int position);
 void			displayDoublyList(DoublyList* pList);
 void			clearDoublyList(DoublyList* pList);
 int				getDoublyListLength(DoublyList* pList);
-void			deleteDoublyList(DoublyList* pList);
+void			deleteDoublyList(DoublyList** pList);
 
 #endif
 

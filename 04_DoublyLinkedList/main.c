@@ -64,7 +64,7 @@ void	func()
 			break;
 		}
 	}
-	deleteDoublyList(pList);
+	deleteDoublyList(&pList);
 }
 
 int main(void)

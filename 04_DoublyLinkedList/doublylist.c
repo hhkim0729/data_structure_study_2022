@@ -125,11 +125,11 @@ int	getDoublyListLength(DoublyList *pList) // list 노드의 개수 확인
 	return (pList->currentElementCount);
 }
 
-void	deleteDoublyList(DoublyList *pList) // list free
+void	deleteDoublyList(DoublyList **pList) // list free
 {
-	if (pList == NULL)
+	if (pList == NULL || *pList == NULL)
 		return;
-	clearDoublyList(pList);
-	free(pList);
-	pList = NULL;
+	clearDoublyList(*pList);
+	free(*pList);
+	*pList = NULL;
 }
