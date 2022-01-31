@@ -23,7 +23,7 @@ ArrayStack*	createArrayStack(int maxElementCount)				// 스택 생성
 
 int	pushAS(ArrayStack* pStack, ArrayStackNode element)	// 노드 추가
 {
-	if (!pStack)
+	if (pStack == NULL)
 		return (FALSE);
 	if (isArrayStackFull(pStack))
 		return (FALSE);
@@ -37,7 +37,7 @@ ArrayStackNode*	popAS(ArrayStack* pStack)							// 노드 제거
 	ArrayStackNode	*element;
 
 	element = peekAS(pStack);
-	if (!element)
+	if (element == NULL)
 		return (NULL);
 	pStack->currentElementCount--;
 	return (element);
@@ -45,7 +45,7 @@ ArrayStackNode*	popAS(ArrayStack* pStack)							// 노드 제거
 
 ArrayStackNode*	peekAS(ArrayStack* pStack)							// 노드 반환
 {
-	if (!pStack)
+	if (pStack == NULL)
 		return (NULL);
 	if (isArrayStackEmpty(pStack))
 		return (NULL);
@@ -54,6 +54,8 @@ ArrayStackNode*	peekAS(ArrayStack* pStack)							// 노드 반환
 
 void	deleteArrayStack(ArrayStack** pStack)				// 스택 제거
 {
+	if (pStack == NULL || *pStack == NULL)
+		return ;
 	free((*pStack)->pElement);
 	free(*pStack);
 	*pStack = NULL;
@@ -61,7 +63,7 @@ void	deleteArrayStack(ArrayStack** pStack)				// 스택 제거
 
 int	isArrayStackFull(ArrayStack* pStack)				// 스택이 찼는지 확인
 {
-	if (!pStack)
+	if (pStack == NULL)
 		return (ERROR);
 	if (pStack->maxElementCount == pStack->currentElementCount)
 		return (TRUE);
@@ -71,7 +73,7 @@ int	isArrayStackFull(ArrayStack* pStack)				// 스택이 찼는지 확인
 
 int	isArrayStackEmpty(ArrayStack* pStack)				// 스택이 비었는지 확인
 {
-	if (!pStack)
+	if (pStack == NULL)
 		return (ERROR);
 	if (pStack->currentElementCount == 0)
 		return (TRUE);
@@ -83,7 +85,7 @@ void	displayArrayStack(ArrayStack* pStack)
 {
 	int	i;
 
-	if (!pStack)
+	if (pStack == NULL)
 		return ;
 	for (i = pStack->currentElementCount - 1; i >= 0 ; i--)
 	{
