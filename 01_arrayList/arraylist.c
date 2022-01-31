@@ -21,12 +21,11 @@ ArrayList*	createArrayList(int maxElementCount)	// arraylist 할당 및 생성
 	return (arrayList);
 }
 
-void	deleteArrayList(ArrayList* pList)		// arraylist free
+void	deleteArrayList(ArrayList** pList)		// arraylist free
 {
-	free(pList->pElement);
-	pList->pElement = NULL;
-	free(pList);
-	pList = NULL;
+	free((*pList)->pElement);
+	free(*pList);
+	*pList = NULL;
 }
 int	isArrayListFull(ArrayList* pList)		// arraylist가 가득 찼는지 확인
 {

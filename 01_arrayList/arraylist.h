@@ -16,7 +16,7 @@ typedef struct ArrayListType
 } ArrayList;
 
 ArrayList*		createArrayList(int maxElementCount);	// arraylist 할당 및 생성
-void			deleteArrayList(ArrayList* pList);		// arraylist free
+void			deleteArrayList(ArrayList** pList);		// arraylist free
 int				isArrayListFull(ArrayList* pList);		// arraylist가 가득 찼는지 확인
 
 int				addALElement(ArrayList* pList, int position, ArrayListNode element);	// arraylist node 추가

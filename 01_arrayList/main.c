@@ -12,19 +12,24 @@ void	func()
 	node.data = 233;
 	addALElement(arrayList, 1, node);
 	displayArrayList(arrayList);
+
 	clearArrayList(arrayList);
 	node.data = 111;
 	addALElement(arrayList, 0, node);
+	node.data = 222;
+	addALElement(arrayList, 0, node);
 	displayArrayList(arrayList);
+
 	result = getALElement(arrayList, 0);
 	result->data = 23234;
 	displayArrayList(arrayList);
-	deleteArrayList(arrayList);
+
+	deleteArrayList(&arrayList);
 }
 
 int	main()
 {
 	func();
-	system("leaks a.out");
+	// system("leaks arraylist");
 	return (0);
 }
