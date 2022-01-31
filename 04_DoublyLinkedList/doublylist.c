@@ -121,7 +121,7 @@ void	clearDoublyList(DoublyList *pList) // list 초기화
 int	getDoublyListLength(DoublyList *pList) // list 노드의 개수 확인
 {
 	if (pList == NULL)
-		return (-1);
+		return (ERROR);
 	return (pList->currentElementCount);
 }
 
