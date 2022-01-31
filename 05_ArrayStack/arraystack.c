@@ -85,7 +85,7 @@ void	displayArrayStack(ArrayStack* pStack)
 
 	if (!pStack)
 		return ;
-	for (i = 0; i < pStack->currentElementCount; i++)
+	for (i = pStack->currentElementCount - 1; i >= 0 ; i--)
 	{
 		printf("%c ", pStack->pElement[i].data);
 	}
