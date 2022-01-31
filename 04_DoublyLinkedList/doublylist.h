@@ -5,16 +5,16 @@
 
 typedef struct DoublyListNodeType
 {
-	int data;
-	struct DoublyListNodeType* pLLink;
-	struct DoublyListNodeType* pRLink;
-} DoublyListNode;
+	int							data;
+	struct DoublyListNodeType*	pLLink;
+	struct DoublyListNodeType*	pRLink;
+}	DoublyListNode;
 
 typedef struct DoublyListType
 {
 	int	currentElementCount;
 	DoublyListNode	headerNode;
-} DoublyList;
+}	DoublyList;
 
 DoublyList*		createDoublyList();
 int				addDLElement(DoublyList* pList, int position, DoublyListNode element);

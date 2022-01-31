@@ -2,7 +2,7 @@
 
 CircularList*	createCircularList()		// list 생성
 {
-	CircularList* list;
+	CircularList	*list;
 
 	list = (CircularList*)malloc(sizeof(CircularList));
 	if (list == NULL)

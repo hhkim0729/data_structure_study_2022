@@ -1,8 +1,8 @@
 #include "doublylist.h"
 
-DoublyList *createDoublyList() // list 생성
+DoublyList*	createDoublyList() // list 생성
 {
-	DoublyList *list;
+	DoublyList	*list;
 
 	list = (DoublyList *)malloc(sizeof(DoublyList));
 	if (list == NULL)
@@ -13,11 +13,11 @@ DoublyList *createDoublyList() // list 생성
 	return (list);
 }
 
-int addDLElement(DoublyList *pList, int position, DoublyListNode element) // 노드 추가
+int	addDLElement(DoublyList *pList, int position, DoublyListNode element) // 노드 추가
 {
-	DoublyListNode *new;
-	DoublyListNode *prev;
-	int i;
+	DoublyListNode	*new;
+	DoublyListNode	*prev;
+	int				i;
 
 	if (pList == NULL || position < 0 || position > pList->currentElementCount)
 		return (FALSE);
@@ -36,11 +36,11 @@ int addDLElement(DoublyList *pList, int position, DoublyListNode element) // 노
 	return (TRUE);
 }
 
-int removeDLElement(DoublyList *pList, int position) // 노드 제거
+int	removeDLElement(DoublyList *pList, int position) // 노드 제거
 {
-	DoublyListNode *prev;
-	DoublyListNode *temp;
-	int i;
+	DoublyListNode	*prev;
+	DoublyListNode	*temp;
+	int				i;
 
 	if (pList == NULL || position < 0 || position >= pList->currentElementCount)
 		return (FALSE);
@@ -56,10 +56,10 @@ int removeDLElement(DoublyList *pList, int position) // 노드 제거
 	return (TRUE);
 }
 
-DoublyListNode *getDLElement(DoublyList *pList, int position) // 노드 가져오기
+DoublyListNode	*getDLElement(DoublyList *pList, int position) // 노드 가져오기
 {
-	int i;
-	DoublyListNode *curr;
+	int				i;
+	DoublyListNode	*curr;
 
 	if (position < 0 || position >= pList->currentElementCount)
 		return (NULL);
@@ -78,10 +78,10 @@ DoublyListNode *getDLElement(DoublyList *pList, int position) // 노드 가져�
 	return (curr);
 }
 
-void displayDoublyList(DoublyList *pList)
+void	displayDoublyList(DoublyList *pList)
 {
-	DoublyListNode *curr;
-	int i;
+	DoublyListNode	*curr;
+	int				i;
 
 	if (pList == NULL)
 		return;
@@ -99,10 +99,10 @@ void displayDoublyList(DoublyList *pList)
 	printf("\n");
 }
 
-void clearDoublyList(DoublyList *pList) // list 초기화
+void	clearDoublyList(DoublyList *pList) // list 초기화
 {
-	DoublyListNode *curr;
-	DoublyListNode *next;
+	DoublyListNode	*curr;
+	DoublyListNode	*next;
 
 	if (pList == NULL)
 		return;
@@ -118,14 +118,14 @@ void clearDoublyList(DoublyList *pList) // list 초기화
 	pList->headerNode.pRLink = &pList->headerNode;
 }
 
-int getDoublyListLength(DoublyList *pList) // list 노드의 개수 확인
+int	getDoublyListLength(DoublyList *pList) // list 노드의 개수 확인
 {
 	if (pList == NULL)
 		return (-1);
 	return (pList->currentElementCount);
 }
 
-void deleteDoublyList(DoublyList *pList) // list free
+void	deleteDoublyList(DoublyList *pList) // list free
 {
 	if (pList == NULL)
 		return;
