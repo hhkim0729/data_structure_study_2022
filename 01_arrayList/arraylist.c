@@ -79,11 +79,8 @@ void	displayArrayList(ArrayList* pList)		// arraylist 출력
 		return ;
 	if (pList->currentElementCount == 0)
 		printf("empty list");
-	else
-	{
-		for (i = 0; i < pList->currentElementCount; i++)
-			printf("%d ", pList->pElement[i].data);
-	}
+	for (i = 0; i < pList->currentElementCount; i++)
+		printf("%d ", pList->pElement[i].data);
 	printf("\n");
 }
 

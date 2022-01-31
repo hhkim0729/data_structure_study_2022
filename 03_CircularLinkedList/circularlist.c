@@ -102,12 +102,10 @@ void	displayCircularList(CircularList *pList)
 	curr = pList->headerNode.pLink;
 	if (curr == NULL)
 		printf("empty list");
-	else{
-		for (i = 0; i < pList->currentElementCount; i++)
-		{
-			printf("%d ", curr->data);
-			curr = curr->pLink;
-		}
+	for (i = 0; i < pList->currentElementCount; i++)
+	{
+		printf("%d ", curr->data);
+		curr = curr->pLink;
 	}
 	printf("\n");
 }

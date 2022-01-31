@@ -85,16 +85,13 @@ void	displayDoublyList(DoublyList *pList)
 
 	if (pList == NULL)
 		return;
-	curr = pList->headerNode.pRLink;
-	if (curr == &pList->headerNode)
+	if (pList->currentElementCount == 0)
 		printf("empty list");
-	else
+	curr = pList->headerNode.pRLink;
+	for (i = 0; i < pList->currentElementCount; i++)
 	{
-		for (i = 0; i < pList->currentElementCount; i++)
-		{
-			printf("%d ", curr->data);
-			curr = curr->pRLink;
-		}
+		printf("%d ", curr->data);
+		curr = curr->pRLink;
 	}
 	printf("\n");
 }

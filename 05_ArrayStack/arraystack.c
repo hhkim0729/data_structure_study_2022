@@ -89,10 +89,7 @@ void	displayArrayStack(ArrayStack* pStack)
 		return ;
 	if (pStack->currentElementCount == 0)
 		printf("empty stack");
-	else
-	{
-		for (i = pStack->currentElementCount - 1; i >= 0 ; i--)
-			printf("%c ", pStack->pElement[i].data);
-	}
+	for (i = pStack->currentElementCount - 1; i >= 0 ; i--)
+		printf("%c ", pStack->pElement[i].data);
 	printf("\n");
 }

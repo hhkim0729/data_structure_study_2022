@@ -78,20 +78,16 @@ ListNode	*getLLElement(LinkedList *pList, int position) // 노드 가져오기
 void	displayLinkedList(LinkedList *pList)
 {
 	ListNode	*curr;
-	int			i;
 
 	if (pList == NULL)
 		return;
 	curr = pList->headerNode.pLink;
 	if (curr == NULL)
 		printf("empty list");
-	else
+	while (curr)
 	{
-		for (i = 0; i < pList->currentElementCount; i++)
-		{
-			printf("%d ", curr->data);
-			curr = curr->pLink;
-		}
+		printf("%d ", curr->data);
+		curr = curr->pLink;
 	}
 	printf("\n");
 }
@@ -231,17 +227,14 @@ void	displayPolyList(LinkedList *list)
 	curr = list->headerNode.pLink;
 	if (curr == NULL)
 		printf("empty list");
-	else
+	while (curr)
 	{
-		while (curr)
-		{
-			printf("%.1f", curr->coef);
-			if (curr->degree)
-				printf("x^%i", curr->degree);
-			curr = curr->pLink;
-			if (curr)
-				printf(" + ");
-		}
+		printf("%.1f", curr->coef);
+		if (curr->degree)
+			printf("x^%i", curr->degree);
+		curr = curr->pLink;
+		if (curr)
+			printf(" + ");
 	}
 	printf("\n");
 }

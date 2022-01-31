@@ -95,13 +95,10 @@ void	displayLinkedStack(LinkedStack* pStack)
 	curr = pStack->pTopElement;
 	if (curr == NULL)
 		printf("empty stack");
-	else
+	while (curr)
 	{
-		while (curr)
-		{
-			printf("%c ", curr->data);
-			curr = curr->pLink;
-		}
+		printf("%c ", curr->data);
+		curr = curr->pLink;
 	}
 	printf("\n");
 }
