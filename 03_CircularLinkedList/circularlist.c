@@ -137,11 +137,11 @@ int	getCircularListLength(CircularList* pList) 		// list 노드의 개수 확인
 	return (pList->currentElementCount);
 }
 
-void	deleteCircularList(CircularList* pList) 	// list free
+void	deleteCircularList(CircularList** pList) 	// list free
 {
-	if (pList == NULL)
+	if (pList == NULL || *pList == NULL)
 		return ;
-	clearCircularList(pList);
-	free(pList);
-	pList = NULL;
+	clearCircularList(*pList);
+	free(*pList);
+	*pList = NULL;
 }

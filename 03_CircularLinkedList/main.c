@@ -64,7 +64,7 @@ void func()
 			break;
 		}
 	}
-	deleteCircularList(pList);
+	deleteCircularList(&pList);
 }
 
 int main(void)
