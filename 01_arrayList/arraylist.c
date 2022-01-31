@@ -23,6 +23,8 @@ ArrayList*	createArrayList(int maxElementCount)	// arraylist 할당 및 생성
 
 void	deleteArrayList(ArrayList** pList)		// arraylist free
 {
+	if (pList == NULL || *pList == NULL)
+		return ;
 	free((*pList)->pElement);
 	free(*pList);
 	*pList = NULL;
