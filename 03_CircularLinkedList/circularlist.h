@@ -32,5 +32,6 @@ void				deleteCircularList(CircularList** pList);									// list free
 
 #define TRUE		1
 #define FALSE		0
+#define ERROR		-1
 
 #endif

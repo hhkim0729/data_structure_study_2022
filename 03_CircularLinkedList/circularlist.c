@@ -100,7 +100,7 @@ void	displayCircularList(CircularList *pList)
 	if (pList == NULL)
 		return ;
 	curr = pList->headerNode.pLink;
-	if (!curr)
+	if (curr == NULL)
 		printf("empty list");
 	else{
 		for (i = 0; i < pList->currentElementCount; i++)
@@ -133,7 +133,7 @@ void	clearCircularList(CircularList* pList) 		// list 초기화
 int	getCircularListLength(CircularList* pList) 		// list 노드의 개수 확인
 {
 	if (pList == NULL)
-		return (-1);
+		return (ERROR);
 	return (pList->currentElementCount);
 }
 
