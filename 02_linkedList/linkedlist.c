@@ -136,7 +136,7 @@ void	reverseLinkedList(LinkedList* pList)
 	ListNode	*curr;
 	ListNode	*next;
 
-	if (!pList)
+	if (pList == NULL)
 		return ;
 	prev = NULL;
 	curr = pList->headerNode.pLink;
@@ -155,7 +155,7 @@ int	addPolyElement(LinkedList* pList, ListNode element)
 	ListNode	*curr;
 	int			position;
 
-	if (!pList)
+	if (pList == NULL)
 		return (FALSE);
 	curr = pList->headerNode.pLink;
 	position = 0;
@@ -182,10 +182,10 @@ LinkedList	*addPolyLists(LinkedList *list1, LinkedList *list2)
 	ListNode	*ptr1;
 	ListNode	*ptr2;
 
-	if (!list1 || !list2)
+	if (list1 == NULL || list2 == NULL)
 		return (NULL);
 	new_list = (LinkedList *)malloc(sizeof(LinkedList));
-	if (!new_list)
+	if (new_list == NULL)
 		return (NULL);
 	ptr1 = list1->headerNode.pLink;
 	ptr2 = list2->headerNode.pLink;
@@ -226,7 +226,7 @@ void	displayPolyList(LinkedList *list)
 {
 	ListNode	*curr;
 
-	if (!list)
+	if (list == NULL)
 		return ;
 	curr = list->headerNode.pLink;
 	while (curr)
