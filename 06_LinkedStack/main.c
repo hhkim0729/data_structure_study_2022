@@ -30,7 +30,6 @@ void	test(void)
 	result = popLS(stack);
 	if (result)
 		printf("pop: %c\n", result->data);
-	
 	displayLinkedStack(stack);
 
 	deleteLinkedStack(&stack);

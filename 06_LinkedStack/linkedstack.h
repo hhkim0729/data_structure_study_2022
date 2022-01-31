@@ -20,7 +20,7 @@ int				pushLS(LinkedStack* pStack, StackNode element);	// 노드 추가
 StackNode*		popLS(LinkedStack* pStack);						// 노드 제거
 StackNode*		peekLS(LinkedStack* pStack);					// 노드 반환
 void			deleteLinkedStack(LinkedStack** pStack);			// 스택 제거
-int				isLinkedStackFull(LinkedStack* pStack);			// 스택이 찼는지 확인
+// int				isLinkedStackFull(LinkedStack* pStack);			// 스택이 찼는지 확인
 int				isLinkedStackEmpty(LinkedStack* pStack);		// 스택이 비었는지 확인
 
 void			displayLinkedStack(LinkedStack* pStack);
