@@ -27,7 +27,7 @@ void	basic_test(void)
 	clearLinkedList(list);
 	displayLinkedList(list);
 
-	deleteLinkedList(list);
+	deleteLinkedList(&list);
 }
 
 /* TEST: linkedlist reverse */
@@ -48,7 +48,7 @@ void	reverse_test(void)
 	reverseLinkedList(list);
 	displayLinkedList(list);
 
-	deleteLinkedList(list);
+	deleteLinkedList(&list);
 }
 
 void	polynomial_test(void)
@@ -114,9 +114,9 @@ void	polynomial_test(void)
 	new_list = addPolyLists(list1, list2);
 	displayPolyList(new_list);	// 3x^6 + x^5 + 4x^4 + 7x^2 + 4
 
-	deleteLinkedList(list1);
-	deleteLinkedList(list2);
-	deleteLinkedList(new_list);
+	deleteLinkedList(&list1);
+	deleteLinkedList(&list2);
+	deleteLinkedList(&new_list);
 }
 
 int main(void)

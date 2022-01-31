@@ -121,13 +121,13 @@ int	getLinkedListLength(LinkedList *pList) // linkedlist 노드의 개수 확인
 	return (pList->currentElementCount);
 }
 
-void	deleteLinkedList(LinkedList *pList) // linkedlist free
+void	deleteLinkedList(LinkedList **pList) // linkedlist free
 {
-	if (pList == NULL)
+	if (pList == NULL || *pList == NULL)
 		return;
-	clearLinkedList(pList);
-	free(pList);
-	pList = NULL;
+	clearLinkedList(*pList);
+	free(*pList);
+	*pList = NULL;
 }
 
 void	reverseLinkedList(LinkedList* pList)

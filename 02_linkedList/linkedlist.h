@@ -25,7 +25,7 @@ ListNode	*getLLElement(LinkedList *pList, int position);						 // 노드 가져�
 void		displayLinkedList(LinkedList *lst);		// linkedlist 출력
 void		clearLinkedList(LinkedList *pList);		// linkedlist 초기화
 int			getLinkedListLength(LinkedList *pList);	// linkedlist 노드의 개수 확인
-void		deleteLinkedList(LinkedList *pList);	// linkedlist free
+void		deleteLinkedList(LinkedList **pList);	// linkedlist free
 
 void		reverseLinkedList(LinkedList* pList);					// linkedlist 역순
 int			addPolyElement(LinkedList* pList, ListNode element);	// 다항식 노드 추가
