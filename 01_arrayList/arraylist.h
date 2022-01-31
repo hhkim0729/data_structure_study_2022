@@ -34,5 +34,6 @@ int				getArrayListLength(ArrayList* pList);	// arraylist에 들어가있는 ele
 
 #define TRUE		1
 #define FALSE		0
+#define ERROR		-1
 
 #endif

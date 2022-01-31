@@ -31,6 +31,8 @@ void	deleteArrayList(ArrayList** pList)		// arraylist free
 }
 int	isArrayListFull(ArrayList* pList)		// arraylist가 가득 찼는지 확인
 {
+	if (pList == NULL)
+		return (ERROR);
 	if (pList->maxElementCount == pList->currentElementCount)
 		return (TRUE);
 	else
@@ -41,14 +43,10 @@ int	addALElement(ArrayList* pList, int position, ArrayListNode element)	// array
 {
 	int	i;
 
-	if (isArrayListFull(pList) || position < 0 || position > pList->currentElementCount)
+	if (pList == NULL || isArrayListFull(pList) || position < 0 || position > pList->currentElementCount)
 		return (FALSE);
-	i = pList->currentElementCount - 1;
-	while (i >= position)
-	{
+	for (i = pList->currentElementCount - 1; i >= position; i--)
 		pList->pElement[i + 1] = pList->pElement[i];
-		i--;
-	}
 	pList->pElement[position] = element;
 	pList->currentElementCount++;
 	return (TRUE);
@@ -58,21 +56,17 @@ int	removeALElement(ArrayList* pList, int position)	// arraylist node 제거
 {
 	int	i;
 
-	if (position < 0 || position >= pList->currentElementCount)
+	if (pList == NULL || position < 0 || position >= pList->currentElementCount)
 		return (FALSE);
-	i = position;
-	while (i < pList->currentElementCount - 1)
-	{
+	for (i = position; i < pList->currentElementCount - 1; i++)
 		pList->pElement[i] = pList->pElement[i + 1];
-		i++;
-	}
 	pList->currentElementCount--;
 	return (TRUE);
 }
 
 ArrayListNode*	getALElement(ArrayList* pList, int position)		// arraylist node 가져오기
 {
-	if (position < 0 || position >= pList->currentElementCount)
+	if (pList == NULL || position < 0 || position >= pList->currentElementCount)
 		return (NULL);
 	return (&pList->pElement[position]);
 }
@@ -81,21 +75,28 @@ void	displayArrayList(ArrayList* pList)		// arraylist 출력
 {
 	int	i;
 
-	i = 0;
-	while (i < pList->currentElementCount)
+	if (pList == NULL)
+		return ;
+	if (pList->currentElementCount == 0)
+		printf("empty list");
+	else
 	{
-		printf("%d ", pList->pElement[i].data);
-		i++;
+		for (i = 0; i < pList->currentElementCount; i++)
+			printf("%d ", pList->pElement[i].data);
 	}
 	printf("\n");
 }
 
 void	clearArrayList(ArrayList* pList)		// arraylist 초기화
 {
+	if (pList == NULL)
+		return ;
 	pList->currentElementCount = 0;
 }
 
 int	getArrayListLength(ArrayList* pList)	// arraylist에 들어가있는 element의 길이 확인
 {
+	if (pList == NULL)
+		return (ERROR);
 	return (pList->currentElementCount);
 }

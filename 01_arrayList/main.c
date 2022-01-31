@@ -24,7 +24,11 @@ void	func()
 	result->data = 23234;
 	displayArrayList(arrayList);
 
+	clearArrayList(arrayList);
+	displayArrayList(arrayList);
+	
 	deleteArrayList(&arrayList);
+	displayArrayList(arrayList);
 }
 
 int	main()
