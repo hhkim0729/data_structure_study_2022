@@ -34,13 +34,18 @@ int	pushAS(ArrayStack* pStack, ArrayStackNode element)	// 노드 추가
 
 ArrayStackNode*	popAS(ArrayStack* pStack)							// 노드 제거
 {
+	ArrayStackNode	*new;
 	ArrayStackNode	*element;
 
 	element = peekAS(pStack);
 	if (element == NULL)
 		return (NULL);
+	new = (ArrayStackNode *)malloc(sizeof(ArrayStackNode));
+	if (new == NULL)
+		return (NULL);
+	*new = *element;
 	pStack->currentElementCount--;
-	return (element);
+	return (new);
 }
 
 ArrayStackNode*	peekAS(ArrayStack* pStack)							// 노드 반환

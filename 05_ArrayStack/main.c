@@ -21,7 +21,12 @@ void	test(void)
 	printf("peek: %c\n", result->data);
 
 	result = popAS(stack);
-	printf("pop: %c\n", result->data);
+	printf("pop: %c\n", result->data);	// c
+	element.data = 'e';
+	pushAS(stack, element);
+	displayArrayStack(stack);	// e b a
+	printf("pop: %c\n", result->data);	// c
+
 	result = popAS(stack);
 	printf("pop: %c\n", result->data);
 	result = popAS(stack);
