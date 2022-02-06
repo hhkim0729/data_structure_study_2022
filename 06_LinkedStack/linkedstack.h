@@ -6,6 +6,9 @@
 typedef struct StackNodeType
 {
 	char					data;
+	int						h;
+	int						w;
+	int						direction;
 	struct StackNodeType*	pLink;
 } StackNode;
 
@@ -20,10 +23,10 @@ int				pushLS(LinkedStack* pStack, StackNode element);	// 노드 추가
 StackNode*		popLS(LinkedStack* pStack);						// 노드 제거
 StackNode*		peekLS(LinkedStack* pStack);					// 노드 반환
 void			deleteLinkedStack(LinkedStack** pStack);			// 스택 제거
-// int				isLinkedStackFull(LinkedStack* pStack);			// 스택이 찼는지 확인
 int				isLinkedStackEmpty(LinkedStack* pStack);		// 스택이 비었는지 확인
 
 void			displayLinkedStack(LinkedStack* pStack);
+
 #endif
 
 #ifndef _COMMON_STACK_DEF_
@@ -33,4 +36,35 @@ void			displayLinkedStack(LinkedStack* pStack);
 #define FALSE		0
 #define ERROR		-1
 
+#endif
+
+// 미로 찾기
+#ifndef _MAP_DEF_
+# define _MAP_DEF_
+
+# define WIDTH 8
+# define HEIGHT 8
+
+# define NUM_DIRECTIONS 4
+
+// offset: h, w
+static int DIRECTION_OFFSETS[NUM_DIRECTIONS][2] = {
+	{0, 1},			// 0: 오른쪽으로 이동
+	{1, 0},			// 1: 아래로 이동
+	{0, -1},		// 2: 왼쪽으로 이동
+	{-1, 0}			// 3: 위로 이동
+};
+
+enum	PosStatus { NOT_VISITED = 0, WALL = 1, VISITED = 2, START = 3, END = 4 };
+enum	PosDirection { RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3 };
+
+void	findPath(int mazeArray[HEIGHT][WIDTH], StackNode startPos, LinkedStack *pStack);
+void	showPath(LinkedStack *pStack, int mazeArray[HEIGHT][WIDTH]);
+void	printMaze(int mazeArray[HEIGHT][WIDTH]);
+
+int		findPosition(int map[HEIGHT][WIDTH], StackNode *position, int element);
+int		findNotVisited(int mazeArray[HEIGHT][WIDTH], StackNode *player, LinkedStack *pStack);
+int		findVisited(int mazeArray[HEIGHT][WIDTH], StackNode *player, LinkedStack *pStack);
+void	exitError(char *message, LinkedStack *pStack);
+void	exitSuccess(char *message, LinkedStack *pStack);
 #endif

@@ -1,6 +1,6 @@
 #include "linkedstack.h"
 
-void	test(void)
+void	stack_test(void)
 {
 	LinkedStack		*stack;
 	StackNode		element;
@@ -36,9 +36,57 @@ void	test(void)
 	displayLinkedStack(stack);
 }
 
+void	maze_test(void)
+{
+	StackNode	startPos;
+	LinkedStack	*stack;
+	int			result;
+	// int			map[HEIGHT][WIDTH] = {
+	// 				{3, 0, 1, 1, 1, 1, 1, 1},
+	// 				{1, 0, 0, 0, 0, 0, 0, 1},
+	// 				{1, 1, 1, 0, 1, 1, 1, 1},
+	// 				{1, 1, 1, 0, 1, 1, 1, 1},
+	// 				{1, 0, 0, 0, 0, 0, 0, 1},
+	// 				{1, 0, 1, 1, 1, 1, 1, 1},
+	// 				{1, 0, 0, 0, 0, 0, 0, 0},
+	// 				{1, 1, 1, 1, 1, 1, 1, 4},
+	// 			};
+
+	// int			map[HEIGHT][WIDTH] = {
+	// 				{4, 0, 1, 1, 1, 1, 1, 1},
+	// 				{1, 0, 0, 0, 0, 0, 0, 1},
+	// 				{1, 1, 1, 0, 1, 1, 1, 1},
+	// 				{1, 1, 1, 0, 1, 1, 1, 1},
+	// 				{1, 0, 0, 0, 0, 0, 0, 1},
+	// 				{1, 0, 1, 1, 1, 1, 1, 1},
+	// 				{1, 0, 0, 0, 0, 0, 0, 0},
+	// 				{1, 1, 1, 1, 1, 1, 1, 3},
+	// 			};
+
+	int			map[HEIGHT][WIDTH] = {
+					{4, 0, 1, 1, 1, 1, 1, 1},
+					{1, 0, 0, 0, 0, 0, 0, 1},
+					{1, 1, 1, 0, 1, 1, 1, 1},
+					{1, 1, 1, 0, 1, 1, 1, 1},
+					{1, 0, 0, 3, 0, 0, 0, 1},
+					{1, 0, 1, 1, 1, 1, 1, 1},
+					{1, 0, 0, 0, 0, 0, 0, 0},
+					{1, 1, 1, 1, 1, 1, 1, 1},
+				};
+	
+	result = findPosition(map, &startPos, START);
+	if (result == FALSE)
+		exitError("Failed to find start position", NULL);
+	stack = createLinkedStack();
+	if (stack == NULL)
+		exitError("Failed to create stack", stack);
+	findPath(map, startPos, stack);
+}
+
 int	main(void)
 {
-	test();
+	// stack_test();
+	maze_test();
 	// system("leaks linkedstack");
 	return (0);
 }
