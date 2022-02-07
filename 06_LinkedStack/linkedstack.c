@@ -141,7 +141,7 @@ int	findStartPosition(int mazeArray[HEIGHT][WIDTH], StackNode *position)
 	return (FALSE);
 }
 
-// 출구까지의 최단 경로 발자국으로 출력
+// 출구까지의 경로 발자국으로 출력
 void	showPath(LinkedStack *pStack, int mazeArray[HEIGHT][WIDTH])
 {
 	StackNode	*current;
@@ -205,6 +205,7 @@ void	printMaze(int mazeArray[HEIGHT][WIDTH])
 	}
 }
 
+// 움직일 방향 찾기
 int	findDirection(int mazeArray[HEIGHT][WIDTH], StackNode *top)
 {
 	int	h;
