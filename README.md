@@ -1,2 +1,20 @@
-# data_structure_study_2022
-2022 Data structure study in 42 Seoul
+# 2022 자료구조 스터디
+
+Data structure study in 42 Seoul
+
+## 목차
+
+| 회차 | 주제                 | 과제                                                                   |
+| ---- | -------------------- | ---------------------------------------------------------------------- |
+| 1회  | 배열, 리스트         | 배열, linked 리스트 구현하기                                           |
+| 2회  | 리스트의 구현과 활용 | circular, double linked list 구현하기, linked list 역순, 다항식의 덧셈 |
+| 3회  | 스택                 | stack array와 linked list로 구현하기                                   |
+| 4회  | 스택 응용            | 미로 구현하기                                                          |
+| 5회  | 큐                   | queue, circluar queue, deque 구현하기                                  |
+| 6회  | 큐 응용              | 큐 시뮬레이션 프로그램                                                 |
+| 7회  | 트리 개념            | 이진 트리 구현, 트리 순회하기                                          |
+| 8회  | 이진트리             | BST, Heap 구현하기                                                     |
+| 9회  | 그래프               | 배열, 연결 리스트로 그래프 구현하기                                    |
+| 10회 | 그래프               | MST, Kruskal, Prim, Dijkstra, Floyd 알고리즘 구현하기                  |
+| 11회 | 정렬                 | 정렬 알고리즘 구현과 시간 복잡도                                       |
+| 12회 | 해싱                 | 검색 알고리즘                                                          |
