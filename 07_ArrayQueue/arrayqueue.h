@@ -1,11 +1,12 @@
 #ifndef _ARRAY_QUEUE_
 #define _ARRAY_QUEUE_
+
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef struct ArrayQueueNodeType
 {
-	char data;
+	char	data;
 }	ArrayQueueNode;
 
 typedef struct ArrayQueueType

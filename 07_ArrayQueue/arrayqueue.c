@@ -87,18 +87,18 @@ int	isArrayQueueEmpty(ArrayQueue* pQueue)
 
 void	displayArrayQueue(ArrayQueue *pQueue)
 {
-	int	idx;
+	int	index;
 
 	if (pQueue->currentElementCount == 0)
 	{
 		printf("empty queue\n");
 		return ;
 	}
-	idx = pQueue->front;
-	while (idx != pQueue->rear)
+	index = pQueue->front;
+	while (index != pQueue->rear)
 	{
-		printf("[%d]: %c, ", idx, (pQueue->pElement)[idx].data);
-		idx = (idx + 1) % pQueue->maxElementCount;
+		printf("[%d]: %c, ", index, (pQueue->pElement)[index].data);
+		index = (index + 1) % pQueue->maxElementCount;
 	}
-	printf("[%d]: %c\n", idx, (pQueue->pElement)[idx].data);
+	printf("[%d]: %c\n", index, (pQueue->pElement)[index].data);
 }

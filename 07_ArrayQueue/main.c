@@ -1,11 +1,11 @@
 
 #include "arrayqueue.h"
 
-static void check()
+static void	check()
 {
-	ArrayQueue      *pQueue;
-	ArrayQueueNode  element;
-	ArrayQueueNode  *get;
+	ArrayQueue		*pQueue;
+	ArrayQueueNode	element;
+	ArrayQueueNode	*get;
 
 	pQueue = createArrayQueue(5);
 
@@ -53,6 +53,7 @@ static void check()
 	}
 
 	displayArrayQueue(pQueue);
+
 	deleteArrayQueue(&pQueue);
 }
 
