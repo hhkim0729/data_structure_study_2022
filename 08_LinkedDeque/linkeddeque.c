@@ -2,15 +2,15 @@
 
 LinkedDeque*	createLinkedDeque()
 {
-	LinkedDeque	*new;
+	LinkedDeque	*deque;
 
-	new = (LinkedDeque *)malloc(sizeof(LinkedDeque));
-	if (new == NULL)
+	deque = (LinkedDeque *)malloc(sizeof(LinkedDeque));
+	if (deque == NULL)
 		return (NULL);
-	new->currentElementCount = 0;
-	new->pFrontNode = NULL;
-	new->pRearNode = NULL;
-	return (new);
+	deque->currentElementCount = 0;
+	deque->pFrontNode = NULL;
+	deque->pRearNode = NULL;
+	return (deque);
 }
 
 int	insertFrontLD(LinkedDeque* pDeque, DequeNode element)
