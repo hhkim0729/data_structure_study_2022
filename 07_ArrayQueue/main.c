@@ -57,10 +57,41 @@ static void	check()
 	deleteArrayQueue(&pQueue);
 }
 
+void	sim_test(void)
+{
+	ArrayQueue		*pWaitQueue;
+	ArrayQueue		*pArrivalQueue;
+	ArrayQueueNode	*customer;
+	int				time;
+	int				serviceUserCount;
+	int				totalWaitTime;
+
+	pWaitQueue = createArrayQueue(10);
+	pArrivalQueue = createArrayQueue(10);
+	customer = NULL;
+	for (int i = 0; i < 10; i++)
+		insertCustomer(i, i + 1, pArrivalQueue);
+	time = 0;
+	while (time <= 10)
+	{
+		processArrival(time, pArrivalQueue, pWaitQueue);
+		customer = processServiceNodeEnd(time, customer, &serviceUserCount, &totalWaitTime);
+		if (customer == NULL)	// 서비스 중인 고객이 없는 경우
+			customer = processServiceNodeStart(time, pWaitQueue);
+		printWaitQueueStatus(time, pWaitQueue);
+		time++;
+	}
+	printReport(pWaitQueue, serviceUserCount, totalWaitTime);
+	free(customer);
+	deleteArrayQueue(&pArrivalQueue);
+	deleteArrayQueue(&pWaitQueue);
+}
+
 int main(void)
 {
-	check();
+	sim_test();
+	// check();
 	// system("leaks arrayqueue");
-	
+
 	return (0);
 }
