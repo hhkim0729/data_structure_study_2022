@@ -7,6 +7,7 @@
 typedef struct BinTreeNodeType
 {
 	char					data;
+	int						key;
 	int						visited;
 	struct BinTreeNodeType*	pLeftChild;
 	struct BinTreeNodeType*	pRightChild;
@@ -23,13 +24,25 @@ BinTreeNode*	insertLeftChildNodeBT(BinTreeNode* pParentNode, BinTreeNode element
 BinTreeNode*	insertRightChildNodeBT(BinTreeNode* pParentNode, BinTreeNode element);
 BinTreeNode*	getLeftChildNodeBT(BinTreeNode* pNode);
 BinTreeNode*	getRightChildNodeBT(BinTreeNode* pNode);
-void			deleteBinTree(BinTree* pBinTree);
+void			deleteBinTree(BinTree** pBinTree);
 void			deleteBinTreeNode(BinTreeNode* pNode);
 
 // 순회
 void	preorderTraverse(BinTreeNode *pNode);
 void	inorderTraverse(BinTreeNode *pNode);
 void	postorderTraverse(BinTreeNode *pNode);
+
+// BST
+BinTree			*createBinSearchTree(void);
+int				insertBinSearchTreeNode(BinTree *pBinTree, BinTreeNode element);
+int				deleteBinSearchTreeNode(BinTree *pBinTree, int key);
+BinTreeNode*	searchBinSearchTreeNode(BinTree *pBinTree, int key);
+BinTreeNode*	searchBinSearchTreeParentNode(BinTree *pBinTree, int key);
+
+// 순회
+void	preorderTraverseBST(BinTreeNode *pNode);
+void	inorderTraverseBST(BinTreeNode *pNode);
+void	postorderTraverseBST(BinTreeNode *pNode);
 
 #endif
 

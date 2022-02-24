@@ -43,12 +43,54 @@ void	test(void)
 	printf("\n후위: ");
 	postorderTraverse(pBinTree->pRootNode);
 	printf("\n");
-	deleteBinTree(pBinTree);
+	deleteBinTree(&pBinTree);
+}
+
+void	test_bst(void)
+{
+	BinTree		*pBinTree;
+	BinTreeNode	element;
+
+	pBinTree = createBinSearchTree();
+
+	element.key = 30;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 20;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 40;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 10;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 24;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 34;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 46;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 6;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 14;
+	insertBinSearchTreeNode(pBinTree, element);
+	element.key = 22;
+	insertBinSearchTreeNode(pBinTree, element);
+
+	inorderTraverseBST(pBinTree->pRootNode);
+	printf("\n");
+	// 없는 경우
+	// deleteBinSearchTreeNode(pBinTree, 14);
+	// 1개인 경우
+	// deleteBinSearchTreeNode(pBinTree, 24);
+	// 2개인 경우
+	deleteBinSearchTreeNode(pBinTree, 40);
+	inorderTraverseBST(pBinTree->pRootNode);
+
+	deleteBinTree(&pBinTree);
 }
 
 int	main(void)
 {
-	test();
+	// test();
+	test_bst();
 	// system("leaks bintree");
 	return (0);
 }
