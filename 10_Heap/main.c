@@ -2,8 +2,8 @@
 
 void	test(void)
 {
-	Heap *pHeap;
-	HeapNode element;
+	Heap		*pHeap;
+	HeapNode	element;
 
 	pHeap = createHeap(7);
 	element.key = 20;
