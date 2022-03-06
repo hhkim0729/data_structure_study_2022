@@ -7,6 +7,7 @@
 typedef struct DequeNodeType
 {
 	char					data;
+	int						vertexId;
 	struct DequeNodeType*	pRLink;
 	struct DequeNodeType*	pLLink;
 }	DequeNode;

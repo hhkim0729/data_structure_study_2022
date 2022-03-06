@@ -20,7 +20,7 @@ int	insertFrontLD(LinkedDeque* pDeque, DequeNode element)
 	new = (DequeNode *)malloc(sizeof(DequeNode));
 	if (new == NULL)
 		return (FALSE);
-	new->data = element.data;
+	*new = element;
 	if (isLinkedDequeEmpty(pDeque) == TRUE)
 	{
 		new->pLLink = NULL;
@@ -46,7 +46,7 @@ int	insertRearLD(LinkedDeque* pDeque, DequeNode element)
 	new = (DequeNode *)malloc(sizeof(DequeNode));
 	if (new == NULL)
 		return (FALSE);
-	new->data = element.data;
+	*new = element;
 	if (isLinkedDequeEmpty(pDeque) == TRUE)
 	{
 		new->pLLink = NULL;
@@ -153,8 +153,10 @@ void	displayLinkedDeque(LinkedDeque *pDeque)
 	}
 	while (curr->pRLink)
 	{
-		printf("%c -> ", curr->data);
+		// printf("%c -> ", curr->data);
+		printf("%d -> ", curr->vertexId);
 		curr = curr->pRLink;
 	}
-	printf("%c\n", curr->data);
+	// printf("%c\n", curr->data);
+	printf("%d\n", curr->vertexId);
 }
