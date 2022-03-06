@@ -23,6 +23,7 @@ int	addLLElement(LinkedList *pList, int position, ListNode element) // 노드 �
 	if (new == NULL)
 		return (FALSE);
 	*new = element;
+	new->visited = FALSE;
 	if (position == 0)
 	{
 		new->pLink = pList->headerNode.pLink;
