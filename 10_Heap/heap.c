@@ -43,13 +43,13 @@ int	insertmaxheap(Heap *pHeap, HeapNode element)
 	pHeap->currentCount++;
 	i = pHeap->currentCount;
 	parent_i = i / 2;
-	while (i > 1 && element.key > pHeap->pElement[parent_i].key)
+	while (i > 1 && element.key >= pHeap->pElement[parent_i].key)
 	{
 		pHeap->pElement[i].key = pHeap->pElement[parent_i].key;
 		i /= 2;
 		parent_i = i / 2;
 	}
-	pHeap->pElement[i].key = element.key;
+	pHeap->pElement[i] = element;
 	return (TRUE);
 }
 
@@ -63,13 +63,13 @@ int	insertminheap(Heap *pHeap, HeapNode element)
 	pHeap->currentCount++;
 	i = pHeap->currentCount;
 	parent_i = i / 2;
-	while (i > 1 && element.key < pHeap->pElement[parent_i].key)
+	while (i > 1 && element.key <= pHeap->pElement[parent_i].key)
 	{
 		pHeap->pElement[i].key = pHeap->pElement[parent_i].key;
 		i /= 2;
 		parent_i = i / 2;
 	}
-	pHeap->pElement[i].key = element.key;
+	pHeap->pElement[i] = element;
 	return (TRUE);
 }
 
@@ -136,6 +136,74 @@ int	deleteMinHeapNode(Heap *pHeap)
 	return (TRUE);
 }
 
+HeapNode	*getMaxHeapNode(Heap *pHeap)
+{
+	int			index;
+	int			left;
+	int			right;
+	int			big;
+	int			tmp;
+	HeapNode	*rootNode;
+
+	if (pHeap == NULL || isHeapEmpty(pHeap))
+		return (NULL);
+	index = 1;
+	rootNode = (HeapNode *)malloc(sizeof(HeapNode));
+	*rootNode = pHeap->pElement[index];
+	pHeap->pElement[index] = pHeap->pElement[pHeap->currentCount];
+	pHeap->currentCount--;
+	while (index < pHeap->currentCount)
+	{
+		left = index * 2;
+		right = index * 2 + 1;
+		big = left;
+		if (pHeap->pElement[left].key < pHeap->pElement[right].key)
+			big = right;
+		if (pHeap->pElement[index].key < pHeap->pElement[big].key)
+		{
+			tmp = pHeap->pElement[index].key;
+			pHeap->pElement[index].key = pHeap->pElement[big].key;
+			pHeap->pElement[big].key = tmp;
+		}
+		index = big;
+	}
+	return (rootNode);
+}
+
+HeapNode	*getMinHeapNode(Heap *pHeap)
+{
+	int			index;
+	int			left;
+	int			right;
+	int			small;
+	int			tmp;
+	HeapNode	*rootNode;
+
+	if (pHeap == NULL || isHeapEmpty(pHeap))
+		return (NULL);
+	index = 1;
+	rootNode = (HeapNode *)malloc(sizeof(HeapNode));
+	*rootNode = pHeap->pElement[index];
+	pHeap->pElement[index] = pHeap->pElement[pHeap->currentCount];
+	pHeap->currentCount--;
+	while (index < pHeap->currentCount)
+	{
+		left = index * 2;
+		right = index * 2 + 1;
+		small = left;
+		if (pHeap->pElement[left].key > pHeap->pElement[right].key)
+			small = right;
+		if (pHeap->pElement[index].key > pHeap->pElement[small].key)
+		{
+			tmp = pHeap->pElement[index].key;
+			pHeap->pElement[index].key = pHeap->pElement[small].key;
+			pHeap->pElement[small].key = tmp;
+		}
+		index = small;
+	}
+	return (rootNode);
+}
+
 
 int	isHeapFull(Heap *pHeap)
 {
@@ -179,7 +247,7 @@ void	displayHeap(Heap *pHeap)
 		{
 			if (j > pHeap->currentCount)
 				break ;
-			printf("%d\t", pHeap->pElement[j].key);
+			printf("%d %d\t", pHeap->pElement[j].vertexId, pHeap->pElement[j].key);
 		}
 		printf("\n");
 		two *= 2;

@@ -10,6 +10,7 @@
 typedef struct HeapNodeType
 {
 	int	key;
+	int	vertexId;
 }	HeapNode;
 
 typedef struct HeapType
@@ -25,6 +26,8 @@ int		insertmaxheap(Heap *pHeap, HeapNode element);
 int		insertminheap(Heap *pHeap, HeapNode element);
 int		deleteMaxHeapNode(Heap *pHeap);
 int		deleteMinHeapNode(Heap *pHeap);
+HeapNode	*getMaxHeapNode(Heap *pHeap);
+HeapNode	*getMinHeapNode(Heap *pHeap);
 
 int		isHeapFull(Heap *pHeap);
 int		isHeapEmpty(Heap *pHeap);
