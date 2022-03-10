@@ -33,7 +33,7 @@ void	deleteHeap(Heap **pHeap)
 }
 
 // 자료 추가
-int	insertmaxheap(Heap *pHeap, HeapNode element)
+int	insertMaxHeap(Heap *pHeap, HeapNode element)
 {
 	int	i;
 	int	parent_i;
@@ -53,7 +53,7 @@ int	insertmaxheap(Heap *pHeap, HeapNode element)
 	return (TRUE);
 }
 
-int	insertminheap(Heap *pHeap, HeapNode element)
+int	insertMinHeap(Heap *pHeap, HeapNode element)
 {
 	int	i;
 	int	parent_i;

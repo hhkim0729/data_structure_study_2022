@@ -20,12 +20,12 @@ typedef struct HeapType
 	HeapNode	*pElement;
 }	Heap;
 
-Heap*	createHeap(int maxCount);
-void	deleteHeap(Heap **pHeap);
-int		insertmaxheap(Heap *pHeap, HeapNode element);
-int		insertminheap(Heap *pHeap, HeapNode element);
-int		deleteMaxHeapNode(Heap *pHeap);
-int		deleteMinHeapNode(Heap *pHeap);
+Heap*		createHeap(int maxCount);
+void		deleteHeap(Heap **pHeap);
+int			insertMaxHeap(Heap *pHeap, HeapNode element);
+int			insertMinHeap(Heap *pHeap, HeapNode element);
+int			deleteMaxHeapNode(Heap *pHeap);
+int			deleteMinHeapNode(Heap *pHeap);
 HeapNode	*getMaxHeapNode(Heap *pHeap);
 HeapNode	*getMinHeapNode(Heap *pHeap);
 
