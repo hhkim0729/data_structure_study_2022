@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "../02_LinkedList/linkedlist.h"
 #include "../08_LinkedDeque/linkeddeque.h"
+#include "../10_Heap/heap.h"
 
 typedef struct LinkedGraphType
 {
@@ -65,6 +66,17 @@ void	searchDFS(LinkedGraph* pGraph);
 // BFS
 void	searchBFS(LinkedGraph* pGraph);
 
+// 최소 신장 트리
+LinkedList	*getSortedEdge(LinkedGraph *pGraph);
+int			dfs(LinkedGraph *pGraph, int now, int from);
+int			checkCycle(LinkedGraph *pGraph, int start);
+LinkedGraph	*kruskal(LinkedGraph *pGraph);
+LinkedGraph	*prim(LinkedGraph *pGraph);
+
+// 최단 경로
+void	dijkstra(LinkedGraph *pGraph);
+void	floyd(LinkedGraph *pGraph);
+
 #endif
 
 #ifndef _COMMON_GRAPH_DEF_
@@ -81,5 +93,7 @@ void	searchBFS(LinkedGraph* pGraph);
 
 #define GRAPH_UNDIRECTED	1
 #define GRAPH_DIRECTED		2
+
+#define INF					1000
 
 #endif

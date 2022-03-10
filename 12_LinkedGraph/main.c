@@ -122,10 +122,94 @@ void	search_test(void)
 	deleteLinkedGraph(bfs_graph);
 }
 
+void	mst_test(void)
+{
+	LinkedGraph	*graph;
+	LinkedGraph	*kruskal_graph;
+	LinkedGraph	*prim_graph;
+
+	graph = createLinkedGraph(6);
+	addVertexLG(graph, 0);
+	addVertexLG(graph, 1);
+	addVertexLG(graph, 2);
+	addVertexLG(graph, 3);
+	addVertexLG(graph, 4);
+	addVertexLG(graph, 5);
+	addEdgewithWeightLG(graph, 0, 1, 4);
+	addEdgewithWeightLG(graph, 0, 2, 3);
+	addEdgewithWeightLG(graph, 1, 2, 2);
+	addEdgewithWeightLG(graph, 2, 3, 1);
+	addEdgewithWeightLG(graph, 3, 4, 1);
+	addEdgewithWeightLG(graph, 3, 5, 5);
+	addEdgewithWeightLG(graph, 4, 5, 6);
+	// displayLinkedGraph(graph);
+
+	kruskal_graph = kruskal(graph);
+	displayLinkedGraph(kruskal_graph);
+
+	prim_graph = prim(graph);
+	displayLinkedGraph(prim_graph);
+
+	deleteLinkedGraph(graph);
+	deleteLinkedGraph(kruskal_graph);
+	deleteLinkedGraph(prim_graph);
+}
+
+void	dijkstra_test(void)
+{
+	LinkedGraph	*graph;
+
+	graph = createLinkedGraph(6);
+	addVertexLG(graph, 0);
+	addVertexLG(graph, 1);
+	addVertexLG(graph, 2);
+	addVertexLG(graph, 3);
+	addVertexLG(graph, 4);
+	addVertexLG(graph, 5);
+	addEdgewithWeightLG(graph, 0, 1, 1);
+	addEdgewithWeightLG(graph, 0, 2, 4);
+	addEdgewithWeightLG(graph, 1, 2, 2);
+	addEdgewithWeightLG(graph, 2, 3, 1);
+	addEdgewithWeightLG(graph, 3, 4, 8);
+	addEdgewithWeightLG(graph, 3, 5, 3);
+	addEdgewithWeightLG(graph, 4, 5, 4);
+	// displayLinkedGraph(graph);
+
+	dijkstra(graph);
+	deleteLinkedGraph(graph);
+}
+
+void	floyd_test(void)
+{
+	LinkedGraph	*graph;
+
+	graph = createLinkedGraph(6);
+	addVertexLG(graph, 0);
+	addVertexLG(graph, 1);
+	addVertexLG(graph, 2);
+	addVertexLG(graph, 3);
+	addVertexLG(graph, 4);
+	addVertexLG(graph, 5);
+	addEdgewithWeightLG(graph, 0, 1, 1);
+	addEdgewithWeightLG(graph, 0, 2, 4);
+	addEdgewithWeightLG(graph, 1, 2, 2);
+	addEdgewithWeightLG(graph, 2, 3, 1);
+	addEdgewithWeightLG(graph, 3, 4, 8);
+	addEdgewithWeightLG(graph, 3, 5, 3);
+	addEdgewithWeightLG(graph, 4, 5, 4);
+	// displayLinkedGraph(graph);
+
+	floyd(graph);
+	deleteLinkedGraph(graph);
+}
+
 int	main(void)
 {
 	// test();
-	search_test();
+	// search_test();
+	// mst_test();
+	dijkstra_test();
+	floyd_test();
 	// system("leaks linkedgraph");
 	return (0);
 }

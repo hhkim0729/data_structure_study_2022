@@ -116,7 +116,7 @@ int	addVertexLG(LinkedGraph* pGraph, int vertexID)
 {
 	ListNode	node;
 
-	if (vertexID < 0 || vertexID >= pGraph->maxVertexCount)
+	if (vertexID < 0 || vertexID >= pGraph->maxVertexCount || checkVertexValid(pGraph, vertexID))
 		return (FAIL);
 	pGraph->pVertex[vertexID] = USED;
 	node.data = vertexID;
@@ -357,8 +357,10 @@ void searchDFS(LinkedGraph* pGraph)
 			}
 			curr = curr->pLink;
 		}
+		free(pop);
 	}
 	printf("\n\n");
+	deleteLinkedDeque(deque);
 }
 
 // BFS
@@ -399,6 +401,8 @@ void searchBFS(LinkedGraph* pGraph)
 			}
 			curr = curr->pLink;
 		}
+		free(pop);
 	}
+	deleteLinkedDeque(deque);
 	printf("\n\n");
 }
