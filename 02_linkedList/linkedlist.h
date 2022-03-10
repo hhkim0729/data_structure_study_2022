@@ -6,6 +6,8 @@
 typedef struct ListNodeType
 {
 	int					data;
+	int					start;
+	int					end;
 	int					weight;
 	int					visited;
 	float				coef;

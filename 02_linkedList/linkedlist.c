@@ -87,7 +87,8 @@ void	displayLinkedList(LinkedList *pList)
 		printf("empty list");
 	while (curr)
 	{
-		printf("%d ", curr->data);
+		// printf("%d ", curr->data);
+		printf("start: %d | end: %d | weight: %d\n", curr->start, curr->end, curr->weight);
 		curr = curr->pLink;
 	}
 	printf("\n");
