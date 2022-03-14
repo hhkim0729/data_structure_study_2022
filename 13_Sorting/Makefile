@@ -2,7 +2,7 @@ CC = gcc
 CFLAG = -Wall -Wextra -Werror
 NAME = sorting
 
-SRCS = main.c sorting.c
+SRCS = main.c sorting.c ../08_LinkedDeque/linkeddeque.c ../10_Heap/heap.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
