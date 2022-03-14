@@ -92,7 +92,7 @@ int	deleteMaxHeapNode(Heap *pHeap)
 		left = index * 2;
 		right = index * 2 + 1;
 		big = left;
-		if (pHeap->pElement[left].key < pHeap->pElement[right].key)
+		if (right <= pHeap->currentCount && pHeap->pElement[left].key < pHeap->pElement[right].key)
 			big = right;
 		if (pHeap->pElement[index].key < pHeap->pElement[big].key)
 		{
@@ -123,7 +123,7 @@ int	deleteMinHeapNode(Heap *pHeap)
 		left = index * 2;
 		right = index * 2 + 1;
 		small = left;
-		if (pHeap->pElement[left].key > pHeap->pElement[right].key)
+		if (right <= pHeap->currentCount && pHeap->pElement[left].key > pHeap->pElement[right].key)
 			small = right;
 		if (pHeap->pElement[index].key > pHeap->pElement[small].key)
 		{
@@ -157,7 +157,7 @@ HeapNode	*getMaxHeapNode(Heap *pHeap)
 		left = index * 2;
 		right = index * 2 + 1;
 		big = left;
-		if (pHeap->pElement[left].key < pHeap->pElement[right].key)
+		if (right <= pHeap->currentCount && pHeap->pElement[left].key < pHeap->pElement[right].key)
 			big = right;
 		if (pHeap->pElement[index].key < pHeap->pElement[big].key)
 		{
@@ -191,7 +191,7 @@ HeapNode	*getMinHeapNode(Heap *pHeap)
 		left = index * 2;
 		right = index * 2 + 1;
 		small = left;
-		if (pHeap->pElement[left].key > pHeap->pElement[right].key)
+		if (right <= pHeap->currentCount && pHeap->pElement[left].key > pHeap->pElement[right].key)
 			small = right;
 		if (pHeap->pElement[index].key > pHeap->pElement[small].key)
 		{
