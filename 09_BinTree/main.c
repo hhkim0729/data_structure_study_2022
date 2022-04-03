@@ -89,8 +89,8 @@ void	test_bst(void)
 
 int	main(void)
 {
-	// test();
-	test_bst();
+	test();
+	// test_bst();
 	// system("leaks bintree");
 	return (0);
 }

@@ -13,7 +13,7 @@ BinTree	*makeBinTree(BinTreeNode rootNode)
 		free(tree);
 		return (NULL);
 	}
-	tree->pRootNode->data = rootNode.data;
+	*(tree->pRootNode) = rootNode;
 	return (tree);
 }
 
@@ -40,7 +40,7 @@ BinTreeNode	*insertLeftChildNodeBT(BinTreeNode *pParentNode, BinTreeNode element
 		fprintf(stderr, "ERROR: 노드 메모리 할당 X\n");
 		return (NULL);
 	}
-	pParentNode->pLeftChild->data = element.data;
+	*(pParentNode->pLeftChild) = element;
 	return (pParentNode->pLeftChild);
 }
 
@@ -57,7 +57,7 @@ BinTreeNode	*insertRightChildNodeBT(BinTreeNode *pParentNode, BinTreeNode elemen
 		fprintf(stderr, "ERROR: 노드 메모리 할당 X\n");
 		return (NULL);
 	}
-	pParentNode->pRightChild->data = element.data;
+	*(pParentNode->pRightChild) = element;
 	return (pParentNode->pRightChild);
 }
 
